@@ -1,0 +1,69 @@
+$bgColor : #0cff12;
+$width : 1024px;
+
+#container {
+	width: 100px;
+	height: 300px;
+	margin: 0;
+	background: $bgColor;
+
+	div {
+		display:none;
+		span {
+			color: blue;
+		}
+	}
+
+	span {
+		color: red;
+	}
+}
+
+.current {
+	&:link {color:red;}
+	&:hover {color:red;}
+	&:visited {color:red;}
+	&:active {color:red;}
+	h1,h2,h3,h4{font-weigth:800;}
+	background: {
+		color: #ff0;
+		image: url();
+		repeat: no-repeat;
+	}
+}
+
+
+.box {
+	width: $width / 3;
+	color : $bgColor;
+}
+
+.box2 {
+	width: $width;
+	color: #f00;
+}
+
+@mixin xx {
+	width: $width / 5;
+	color: #0f0;
+	height: 300px;
+	display: inline-block;
+}
+
+.box3 {
+	background: $bgColor;
+	@include xx;
+}
+
+.box4 {
+	padding: 0;
+	margin:0;
+	border:1px solid;
+	@include xx;
+}
+
+.box5 {
+	@extend .box4;
+	font-size:15px;
+	text-align:center;
+}

@@ -1,0 +1,49 @@
+自定义插件
+	$.fn.extend() -- 为 jQuery 对象扩展功能
+	$.extend() -- 为 jQuery 本身扩展功能
+
+抛物线插件：https://github.com/amibug/fly
+
+放大镜插件：
+
+jQuery UI
+	拖拽
+	日期选择器
+	自动完成
+	滑块
+	.......
+
+jQuery EasyUI
+
+Highcharts -- 图表
+echarts
+
+地图
+
+SASS / LESS
+	CSS 预处理器
+
+	SASS 建立在 Ruby 环境基础上
+
+	编写 SASS 文件：
+		a. 保存文件的后缀名为 .scss
+		
+https://www.sass.hk/guide/
+
+	变量：
+		$var : value;
+
+	嵌套CSS 规则：
+
+	父选择器的标识符&：
+
+	群组选择器的嵌套：,
+
+	嵌套属性：
+
+	混合器:
+		@mixin 名称{复用代码块}
+		@include 混合器名称
+
+	继承：
+		@extend

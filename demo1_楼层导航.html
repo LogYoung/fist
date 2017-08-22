@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<style type="text/css">
+		.header	{width: 900px;height: 500px;margin:auto; background: #ccc;}
+		.nav {width: 900px; height: 300px;margin:auto; background: #666;}
+		.ad {width: 900px;height: 150px; margin:auto; background: #0f0;}
+		.floor {width: 900px;height: 600px;margin:auto;}
+		.footer {width: 900px;height: 300px;margin:auto; background: #ccc;}
+		.side_menu {background: white; position: fixed; bottom:10px; left:20px; list-style: none; display: none;}
+		.side_menu li {width: 80px;height: 30px;line-height: 30px;border:1px solid; text-align: center; position: relative;}
+		.side_menu li span {position: absolute; background: #f00; left:0; top:0; width:80px; height:30px; line-height: 30px; display: none;}
+	</style>
+</head>
+<body>
+	<div class="header"></div>
+	<div class="nav"></div>
+	<div class="ad"></div>
+	<div class="main">
+		<div class="floor" style="background: #f00;">1L</div>
+		<div class="floor" style="background: #0f0;">2L</div>
+		<div class="floor" style="background: #00f;">3L</div>
+		<div class="floor" style="background: #ff0;">4L</div>
+		<div class="floor" style="background: #0ff;">5L</div>
+	</div>
+	<div class="footer"></div>
+
+	<ul class="side_menu">
+		<li>1L<span style="display: block;">服饰</span></li>
+		<li>2L<span>家电</span></li>
+		<li>3L<span>手机</span></li>
+		<li>4L<span>数码</span></li>
+		<li>5L<span>零食</span></li>
+	</ul>
+
+	<script src="lib/jquery/jquery-1.12.4.min.js"></script>
+	<script>
+		$(function(){
+			// 获取窗口高度
+			var winHeight = $(window).height();
+			// 获取1L之前的布局结构高度
+			var layoutHeight = $(".floor").offset().top;
+			// 标记是鼠标滚轮的滚动还是点击菜单导航的滚动
+			var autoScroll = true;
+			// 滚动
+			$(window).scroll(function(){
+				if (autoScroll) {
+					// 获取当前滚动的高度
+					var _scrollTop = $(window).scrollTop();
+					// 判断滚动的高度
+					if (_scrollTop > layoutHeight - winHeight / 2) {
+						$(".side_menu").stop().fadeIn();
+					} else {
+						$(".side_menu").stop().fadeOut();
+					}
+
+					// 滚动过程中导航菜单样式切换
+					$(".floor").each(function(index, element){
+						// 当前遍历到楼层在文档中距离顶部高度
+						var _top = $(element).offset().top;
+						// 判断
+						if (_scrollTop > _top - winHeight/2) {
+							$(".side_menu li").eq(index)
+											  .children("span").show()
+											  .end()
+											  .siblings()
+											  .children("span").hide();
+						}
+					});
+				}
+			});
+
+			// 点击菜单跳转
+			// $(".side_menu").delegate("li", "click", function(){});
+			$(".side_menu").on("click", "li", function(){
+				// 标记点击滚动
+				autoScroll = false;
+				// 找出当前点击li的索引
+				var idx = $(this).index();
+				// 计算idx对应楼层在文档中的定位
+				var _top = $(".floor").eq(idx).offset().top;
+				// 运动动画
+				$("html, body").stop().animate({scrollTop:_top}, function(){
+					autoScroll = true;
+				});
+				// 点击的 li 切换显示样式内容
+				$(this).children("span").show().end().siblings().children("span").hide();
+			});
+
+			// 菜单上移入移出
+			$(".side_menu li").hover(function(){
+				$(this).children("span").show();
+			}, function(){
+				$(this).children("span").hide();
+			});
+		});
+	</script>
+</body>
+</html>

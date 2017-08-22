@@ -1,0 +1,69 @@
+#container {
+  width: 100px;
+  height: 300px;
+  margin: 0;
+  background: #0cff12;
+}
+#container div {
+  display: none;
+}
+#container div span {
+  color: blue;
+}
+#container span {
+  color: red;
+}
+
+.current {
+  background-color: #ff0;
+  background-image: url();
+  background-repeat: no-repeat;
+}
+.current:link {
+  color: red;
+}
+.current:hover {
+  color: red;
+}
+.current:visited {
+  color: red;
+}
+.current:active {
+  color: red;
+}
+.current h1, .current h2, .current h3, .current h4 {
+  font-weigth: 800;
+}
+
+.box {
+  width: 341.33333px;
+  color: #0cff12;
+}
+
+.box2 {
+  width: 1024px;
+  color: #f00;
+}
+
+.box3 {
+  background: #0cff12;
+  width: 204.8px;
+  color: #0f0;
+  height: 300px;
+  display: inline-block;
+}
+
+.box4, .box5 {
+  padding: 0;
+  margin: 0;
+  border: 1px solid;
+  width: 204.8px;
+  color: #0f0;
+  height: 300px;
+  display: inline-block;
+}
+
+.box5 {
+  font-size: 15px;
+  text-align: center;
+}
